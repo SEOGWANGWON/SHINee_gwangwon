@@ -1,107 +1,90 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-	<head>
-	<meta charset="UTF-8">
-	<title>SHINee Music회원가입 페이지</title>
-	</head>
-	<body>
-		<div class="pageColor">
-            <button style="float: right; margin: 0 0 -5% 0; width: 22px;height: 22px;">X</button>
-            <img src="./img/oldicon/Tab.png" class="pawnTab">
-            <div id="createAccount">
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>SHINee Music회원가입 페이지</title>
+        <link rel="stylesheet" type="text/css" href="css/CreateAccountPage.css">
+    </head>
+    <body>
+        <div class="pageColor">
+            <div class="TabColor"><img src="images/mypage.png" class="TabiconImage"><strong class="TabTextStyle">회원 가입</strong> 
+                <button id="pageCloseButton" class="pageCloseButton" onclick="closeButton()"><Strong class="pageCloseButtonText">X</Strong></button>
+            </div>           
+                <form id="createAccount" action="SHINeeRegisterServlet" method="post">
                 <div id="divid">
                     <label for="id">
-                        <img src="./img/oldicon/user.png" style="width: 28px;height: 26px; margin-bottom: -8px;">
+                        <img class="iconImg" src="images/user.png">
                     </label>
-                    <input id="id" type="text" placeholder="아이디">
+                    <input id="id" name="id" type="text" placeholder="아이디">
                     <button id="idButton">아이디 중복 확인</button>
+                    <p id="ruleid"></p>
                 </div>
-                <br>
-                <form onsubmit="return submitPassword()">
-                    <div>
-                    
-                        <label for="pw">
-                            <img src="./img/oldicon/password.png" style="width: 28px; height: 26px; margin-bottom: -8px;">
-                        </label>
-                        <input id="pw" type="password" placeholder="비밀번호">
-                        <p id="pm" style="color: red;"></p>
-                    </div>
-                    <br>
-                    <div>
-                        <label for="checkpw">
-                            <img src="./img/oldicon/passwordcheck.png" style="width: 26px; height: 26px; margin-bottom: -8px;">
-                        </label>
-                        <input id="checkpw" type="password" placeholder="비밀번호 확인">
-                        <input type="submit" value="비밀번호 확인">
-                        <p id="checkpm" style="color: red;"></p>
-                   	</div>
-               	 </form>
-               </div>
+                <div>
+                    <label for="name">
+                        <img class="iconImg" src="images/name.png">
+                    </label>
+                    <input id="name" name="name" type="text" placeholder="이름">
+                    <p id="rulename"></p>
+                </div>
+                <div>
+                    <label for="pw">
+                        <img class="iconImg" src="images/password.png">
+                    </label>
+                    <input id="pw" name="pw" type="password" oninput="pwCheck()"  placeholder="비밀번호">
+                    <p id="rulepm"></p>
+                </div>
+                <div>
+                    <label for="checkpw">
+                       <img class="iconImg" src="images/passwordcheck.png">
+                    </label>
+                    <input id="checkpw" type="password" oninput="pwCheck()" placeholder="비밀번호 확인">
+                    <span id="checkpm"></span>
+                </div>
                 <br>
                 <div>
                     <label for="nickname">
-                        <img src="./img/oldicon/profile.png" style="width: 28px; height: 26px; margin-bottom: -8px;">
+                        <img class="iconImg" src="images/profile.png">
                     </label>
-                    <input id="nickname" type="text" placeholder="닉네임">
-                    <button id="checkNname">닉네임 중복 확인</button>
+                    <input id="nickname" name="nickname" type="text" placeholder="닉네임">
+                    <p id="rulenickname"></p>
                 </div>
-                <br>
+                
                 <div>
-                    <strong class="desktext">프로필 사진</strong>
+                    <div id="profileContainer">
+                        <!-- 프로필 사진을 표시할 컨테이너 -->
+                        <img id="uploadProfile">
+                    </div>
+                    <input type="file" id="profileInput" accept="image/*" style="margin: 0 0 0 6%;">
+                    <button id="profileUploadButton">프로필 등록</button>
                 </div>
                 <br>
                 <div>
                     <label for="emailid">
-                        <img src="./img/oldicon/email.png" style="width: 28px; height: 26px; margin-bottom: -8px;">
+                        <img class="iconImg" src="images/email.png">
                     </label>
-                    <input id="emailid" type="text" placeholder="이메일 주소">
-                    <strong>@ </strong>
+                    <input id="emailid" name="emailid" type="text" placeholder="myemail">
+                    <strong>@</strong>
                     <input id="emailLink" type="text" placeholder="naver.com">
+                    <p id="ruleemail"></p>
                 </div>
-                <br>
+                
                 <div>
-                    <label for="phoneNumber2">
-                        <img src="./img/oldicon/phone.png" style="width: 28px; height: 26px; margin-bottom: -8px;">
+                    <label for="phoneNumber">
+                        <img class="iconImg" src="images/phone.png">
                     </label>
-                    <input id="phoneNumber1" type="text" placeholder="010">
-                    <strong>-</strong>
-                    <input id="phoneNumber2" type="text" placeholder="0000">
-                    <strong>-</strong>
-                    <input id="phoneNumber3" type="text" placeholder="0000">
+                    <input id="phoneNumber" name="phoneNumber" type="text" placeholder="01012345678">
+                    <p id="rulephoneNumber"></p>
                 </div>
-            </div>
-
-            
+                <button id="createUserButton" onclick="CreateUser()">회원가입</button>
+            </form>
         </div>
         <script src="https://code.jquery.com/jquery-3.7.1.js" 
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
         crossorigin="anonymous"></script>
-        <script>
-            function submitPassword(){
-                var password = document.getElementById("pw").value;
-                var passwordCheck = document.getElementById("checkpw").value;
+        <script src="js/CreateAccountPage.js">
 
-                var passwordPattarn = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
-                var errorPW = document.getElementById("pm");
-                var checkErrorPW = document.getElementById("checkpm");
-
-                if(!passowrd.match(passwordPattarn)){
-                    errorPW.textContent = "비밀번호는 8 ~ 20자의 영문 대문자, 소문자, 특수문자, 숫자를 포함해야합니다.";
-                    return false;
-                } else{
-                    errorPW.textContent = "";
-                }
-
-                if(password !== passwordCheck){
-                    checkErrorPW.textContent = "비밀번호가 일치하지 않습니다.";
-                    return false;
-                } else{
-                    checkErrorPW.textContent = "";
-                }
-                return true;
-
-            }
-	</body>
+        </script>
+    </body>
 </html>
