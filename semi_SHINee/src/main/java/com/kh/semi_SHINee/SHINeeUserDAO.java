@@ -94,11 +94,11 @@ public class SHINeeUserDAO {
 		
 		
 	}
-	public SHINeeUserData getSHINeeUserIdCheck(String userId) {
-		SHINeeUserData user	= new SHINeeUserData();
+	public void getSHINeeUserIdCheck(String userId) {
+		
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection(jdbcURL,username ,password);
+			con = DriverManager.getConnection(jdbcURL, username, password);
 			String sql = "SELECT USER_ID FROM USER_INFO WHERE USER_ID LIKE ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
@@ -109,7 +109,8 @@ public class SHINeeUserDAO {
 			if(result.next()) {
 				String userID = result.getString("USER_ID");
 				
-				user.setUserId(userID);
+				
+			} else {
 				
 			}
 			
@@ -122,7 +123,7 @@ public class SHINeeUserDAO {
 			e.printStackTrace();
 		}
 		
-		return user;
+		
 	}
 	
 	
