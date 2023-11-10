@@ -82,11 +82,13 @@ function CreateUser(){
         alert("올바른 번호가 아닙니다.");
         return false;
     }
+    /*
     alert("회원가입이 정상적으로 완료되었습니다!.");
     var pageMove =  "https://music.apple.com/kr/browse";
     location.href = pageMove;     // ( 현재 페이지에서 이동 )
     
     // window.open(사이트링크) ( 새창 열기 )
+    */
 
 
 
