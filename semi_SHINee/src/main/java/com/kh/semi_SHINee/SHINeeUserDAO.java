@@ -12,6 +12,9 @@ public class SHINeeUserDAO {
 	private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
 	private static final String username = "shinee";
 	private static final String password = "shinee";
+	private Connection con;
+	private PreparedStatement ps;
+	private ResultSet result;
 
 	
 	public SHINeeUserDAO() {
@@ -27,10 +30,10 @@ public class SHINeeUserDAO {
 		List<SHINeeUserData> userInfo = new ArrayList<>();
 		
 		try {
-			Connection con = DriverManager.getConnection(jdbcURL, username, password);
+			con = DriverManager.getConnection(jdbcURL, username, password);
 			String sql = "SELECT * FROM USER_INFO";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet result = ps.executeQuery();
+			ps = con.prepareStatement(sql);
+			result = ps.executeQuery();
 			
 			while(result.next()) {
 				String userId = result.getString("USER_ID");
@@ -44,6 +47,9 @@ public class SHINeeUserDAO {
 				userInfo.add(user);
 					
 			}
+			result.close();
+			ps.close();
+			con.close();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -55,7 +61,7 @@ public class SHINeeUserDAO {
 	
 	public SHINeeUserData getSHINeeUserInfo(String userId) {
 		SHINeeUserData user	= new SHINeeUserData();
-		Connection con = null;
+		con = null;
 		try {
 			con = DriverManager.getConnection(jdbcURL,username ,password);
 			String sql = "SELECT * FROM USER_INFO WHERE USER_ID = ?";
@@ -94,12 +100,12 @@ public class SHINeeUserDAO {
 		
 		
 	}
-	public void getSHINeeUserIdCheck(String userId) {
+	public boolean getSHINeeUserIdCheck(String userId) {
 		
-		Connection con = null;
+		con = null;
 		try {
 			con = DriverManager.getConnection(jdbcURL, username, password);
-			String sql = "SELECT USER_ID FROM USER_INFO WHERE USER_ID LIKE ?";
+			String sql = "SELECT USER_ID FROM USER_INFO WHERE USER_ID = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setString(1, userId);
@@ -107,10 +113,7 @@ public class SHINeeUserDAO {
 			ResultSet result = ps.executeQuery();
 
 			if(result.next()) {
-				String userID = result.getString("USER_ID");
-				
-				
-			} else {
+				return true;
 				
 			}
 			
@@ -120,9 +123,11 @@ public class SHINeeUserDAO {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+			
 		}
-		
+		return false;
 		
 	}
 	

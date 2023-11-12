@@ -20,11 +20,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/SHINeeRegisterServlet")
 public class SHINeeRegisterServlet extends HttpServlet {
+	private static final String jdbcurl = "jdbc:oracle:thin:@localhost:1521:xe";
+	private static final String username = "shinee";
+	private static final String password = "shinee";
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jdbcurl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String username = "shinee";
-		String password = "shinee";
 		
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -74,7 +74,7 @@ public class SHINeeRegisterServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.sendRedirect("HomePage.jsp");
+		response.sendRedirect("SHINeeRegister.jsp");
 		
 		
 	}

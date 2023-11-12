@@ -35,6 +35,10 @@ function closeButton(){
     };
 };
 
+function idCheck(){
+	
+}
+
 function CreateUser(){
     var userid = document.getElementById("id").value;
     var username = document.getElementById("name").value; 

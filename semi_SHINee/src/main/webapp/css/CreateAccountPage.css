@@ -46,8 +46,8 @@ body{
     
    
 }
-#emailid,#emailLink{
-    width: 150px;
+#emailid{
+    width: 335px;
     height: 28px;
     border: 2px inset rgb(194, 192, 192);
     box-shadow: 1px 1px 1px 0 rgb(224, 222, 222);  
