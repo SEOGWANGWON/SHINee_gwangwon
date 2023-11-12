@@ -18,14 +18,6 @@ document.getElementById("profileUploadButton").addEventListener("click", functio
     };
 });
 
-function pwCheck(){
-    if($('#pw').val() == $('#checkpw').val()){
-        $('#checkpm').text('비밀번호 일치').css('color', 'green');
-    }else{
-        $('#checkpm').text('비밀번호가 불일치').css('color', 'red');
-    };
-};
-
 function closeButton(){
 
     if(confirm("회원가입을 취소하시겠습니까?.")){
@@ -37,7 +29,89 @@ function closeButton(){
 
 function idCheck(){
 	
+	var userid = document.getElementById("id").value;
+	var idPattarn =  /^[A-za-z0-9]{6,12}$/;
+	
+	if(idPattarn.test(userid)){
+		$('#ruleid').text('조건 일치').css('color', 'green');
+	}else{
+        $('#ruleid').text("아이디는 6 ~ 12 자의 숫자,영어 로만 구성되어야합니다").css('color', 'red');
+     };
+};
+
+function nameCheck(){
+
+    var username = document.getElementById("name").value; 
+    var namePattarn = /^[가-힣]{1,15}$/;
+
+    if(namePattarn.test(username)){
+		$('#rulename').text('조건 일치').css('color', 'green');
+	}else{
+        $('#rulename').text("아이디는 6 ~ 12 자의 숫자,영어 로만 구성되어야합니다").css('color', 'red');
+     };
+};
+
+function passwordCheck(){
+
+    var password = document.getElementById("pw").value;
+    var passwordPattarn = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,32}$/;
+
+    if(passwordPattarn.test(password)){
+		$('#rulename').text('조건 일치').css('color', 'green');
+	}else{
+        $('#rulename').text("아이디는 6 ~ 12 자의 숫자,영어 로만 구성되어야합니다").css('color', 'red');
+     };
 }
+
+function pwCheck(){
+    if($('#pw').val() == $('#checkpw').val()){
+        $('#checkpm').text('비밀번호 일치').css('color', 'green');
+    }else{
+        $('#checkpm').text('비밀번호가 불일치').css('color', 'red');
+    };
+};
+
+function nicknameCheck(){
+
+    var userNickname = document.getElementById("nickname").value;
+    var nicknamePattarn =  /^[가-힣A-za-z0-9]{1,20}$/;
+    
+    if(nicknamePattarn.test(userNickname)){
+		$('#rulename').text('조건 일치').css('color', 'green');
+	}else{
+        $('#rulename').text("아이디는 6 ~ 12 자의 숫자,영어 로만 구성되어야합니다").css('color', 'red');
+     };
+    
+};
+
+function userEmailCheck(){
+    
+    var userEmail = document.getElementById("emailid").value;
+    var emailPattarn =  /^[A-Za-z-0-9\-\.]+@[A-Ja-z-0-9\-\.]+\.[A-Ja-z-0-9]+$/;
+
+    if(emailPattarn.test(userEmail)){
+		$('#rulename').text('조건 일치').css('color', 'green');
+	}else{
+        $('#rulename').text("아이디는 6 ~ 12 자의 숫자,영어 로만 구성되어야합니다").css('color', 'red');
+     };
+};
+
+function userPhoneCheck(){
+
+    var userPhone = document.getElementById("phoneNumber").value;
+    var phonePattarn = /^[0-1]{1,3}[0-9]{4,11}$/;
+
+    if(phonePattarn.test(userPhone)){
+		$('#rulename').text('조건 일치').css('color', 'green');
+	}else{
+        $('#rulename').text("아이디는 6 ~ 12 자의 숫자,영어 로만 구성되어야합니다").css('color', 'red');
+     };
+}
+
+
+
+
+
 
 function CreateUser(){
     var userid = document.getElementById("id").value;
@@ -55,7 +129,7 @@ function CreateUser(){
     var namePattarn = /^[가-힣]{1,15}$/;
     var passwordPattarn = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
     var nicknamePattarn =  /^[가-힣A-za-z0-9]{1,20}$/;
-    var emailPattarn =  /^[A-za-z0-9]{1,80}$/;
+    var emailPattarn =  /^[A-Za-z-0-9\-\.]+@[A-Ja-z-0-9\-\.]+\.[A-Ja-z-0-9]+$/;
     var phonePattarn = /^[0-1]{1,3}[0-9]{4,11}$/;
 
     if(!userid.match(idPattarn)){
@@ -86,13 +160,11 @@ function CreateUser(){
         alert("올바른 번호가 아닙니다.");
         return false;
     }
-    /*
     alert("회원가입이 정상적으로 완료되었습니다!.");
-    var pageMove =  "https://music.apple.com/kr/browse";
-    location.href = pageMove;     // ( 현재 페이지에서 이동 )
+    var pageMove = "https://music.apple.com/kr/browse";
+    location.href=pageMove;     // ( 현재 페이지에서 이동 )
     
     // window.open(사이트링크) ( 새창 열기 )
-    */
 
 
 
