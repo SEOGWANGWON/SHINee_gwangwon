@@ -129,41 +129,37 @@ function CreateUser(){
     var passwordPattarn = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,32}$/;
     var nicknamePattarn =  /^[가-힣A-za-z0-9]{1,20}$/;
     var emailPattarn =  /^[A-Za-z-0-9\-\.]+@[A-Ja-z-0-9\-\.]+\.[A-Ja-z-0-9]+$/;
-    var phonePattarn = /^(010|011)[0-9]{8}$/;
+    var phonePattarn = /^(010|011)[0-9]{8}$/;	
 
     if(!userid.match(idPattarn)){
         alert("아이디는 6 ~ 12 자의 숫자,영어 로만 구성되어야합니다");
         return false;
-    }
-    if(!username.match(namePattarn)){
+    }else if(!username.match(namePattarn)){
         alert("이름은 15자 이하의 한글로만 구성되어야 합니다.");
         return false;
-    }
-    if(!password.match(passwordPattarn)){
+    }else if(!password.match(passwordPattarn)){
         alert("비밀번호는 6 ~ 32자의 영문, 대문자, 소문자, 특수문자, 숫자를 포함해야합니다.");
         return false;
-    }
-    if(password !== passwordCheck){
+    }else if(password !== passwordCheck){
         alert("비밀번호가 일치하지 않습니다.");
         return false;
-    }
-    if(!userNickname.match(nicknamePattarn)){
+    }else if(!userNickname.match(nicknamePattarn)){
         alert("닉네임은 20자 이하의 영어,숫자,한글로만 구성되어야 합니다.");
         return false;
-    }
-    if(!userEmail.match(emailPattarn)){
+    }else if(!userEmail.match(emailPattarn)){
         alert("이메일은 80자 이하의 @과.를 포함한 영어, 숫자로만 구성되어야 합니다.")
         return false;
-    }
-    if(!userPhone.match(phonePattarn)){
+    }else if(!userPhone.match(phonePattarn)){
         alert("올바른 번호가 아닙니다.");
         return false;
-    }
+    }else{
     alert("회원가입이 정상적으로 완료되었습니다!.");
     var pageMove = "https://music.apple.com/kr/browse";
     location.href=pageMove;     // ( 현재 페이지에서 이동 )
     
     // window.open(사이트링크) ( 새창 열기 )
+    
+    };
 
 
 

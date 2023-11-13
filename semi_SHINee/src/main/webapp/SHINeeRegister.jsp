@@ -75,7 +75,7 @@
 	                    <input id="phoneNumber" name="phoneNumber" type="text" oninput="userPhoneCheck()" placeholder="01012345678" autocomplete="off">
 	                    <p id="rulephoneNumber"></p>
 	                </div>
-	                <button id="createUserButton" type="button" onclick="CreateUser()">회원가입</button>
+	                <button id="createUserButton" onclick="CreateUser()">회원가입</button>
             	</form>
        	</div>
        	<script src="https://code.jquery.com/jquery-3.7.1.js" 
