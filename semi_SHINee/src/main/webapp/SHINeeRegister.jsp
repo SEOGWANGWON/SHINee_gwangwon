@@ -17,7 +17,8 @@
 	                    <label for="id">
 	                        <img class="iconImg" src="images/user.png">
 	                    </label>
-	                    <input id="id" name="id" type="text" oninput="idCheck()"  placeholder="아이디">
+	                    <input id="id" name="id" type="text" oninput="idCheck()"  placeholder="아이디" autocomplete="off">
+	                    									<!--  oninput = 입력할때마다 실시간 체크   autocomplete="off" 자동완성 기능 off -->
 	                    <button id="idButton" type="button">아이디 중복 확인</button>
 	                    <p id="ruleid"></p>
 	                </div>
@@ -25,14 +26,14 @@
 	                    <label for="name">
 	                        <img class="iconImg" src="images/name.png">
 	                    </label>
-	                    <input id="name" name="name" type="text" placeholder="이름">
+	                    <input id="name" name="name" type="text" oninput="nameCheck()" placeholder="이름" autocomplete="off">
 	                    <p id="rulename"></p>
 	                </div>
 	                <div>
 	                    <label for="pw">
 	                        <img class="iconImg" src="images/password.png">
 	                    </label>
-	                    <input id="pw" name="pw" type="password" oninput="pwCheck()"  placeholder="비밀번호">
+	                    <input id="pw" name="pw" type="password" oninput="pwCheck()"  placeholder="비밀번호" autocomplete="off">
 	                    <p id="rulepm"></p>
 	                </div>
 	                <div>
@@ -47,7 +48,7 @@
 	                    <label for="nickname">
 	                        <img class="iconImg" src="images/profile.png">
 	                    </label>
-	                    <input id="nickname" name="nickname" type="text" placeholder="닉네임">
+	                    <input id="nickname" name="nickname" type="text" oninput="nicknameCheck()" placeholder="닉네임" autocomplete="off">
 	                    <p id="rulenickname"></p>
 	                </div>
 	                
@@ -64,14 +65,14 @@
 	                    <label for="emailid">
 	                        <img class="iconImg" src="images/email.png">
 	                    </label>
-	                    <input id="emailid" type="email" name="emailid"  placeholder="user@naver.com">
+	                    <input id="emailid" type="email" name="emailid"  oninput="userEmailCheck()" placeholder="hongildong@naver.com" autocomplete="off">
 	                    <p id="ruleemail"></p>
 	                </div>
 	                <div>
 	                    <label for="phoneNumber">
 	                        <img class="iconImg" src="images/phone.png">
 	                    </label>
-	                    <input id="phoneNumber" name="phoneNumber" type="text" placeholder="01012345678">
+	                    <input id="phoneNumber" name="phoneNumber" type="text" oninput="userPhoneCheck()" placeholder="01012345678" autocomplete="off">
 	                    <p id="rulephoneNumber"></p>
 	                </div>
 	                <button id="createUserButton" type="button" onclick="CreateUser()">회원가입</button>

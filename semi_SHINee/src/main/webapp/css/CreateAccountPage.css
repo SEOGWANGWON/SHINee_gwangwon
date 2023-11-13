@@ -5,7 +5,7 @@ body{
 }
 .pageColor{
     width: 650px;
-    height: 780px;
+    height: 900px;
     margin: 0 auto;
     margin-top: 5%;
     border: 2px outset rgb(199, 195, 195);
@@ -43,8 +43,6 @@ body{
     margin-left: 10%;
     padding: 50px;
     border-radius: 5%;
-    
-   
 }
 #emailid{
     width: 335px;
@@ -115,8 +113,16 @@ input{
     height: 28px;
     border: 2px inset rgb(194, 192, 192);
     box-shadow: 1px 1px 1px 0 rgb(224, 222, 222);  
-}
+}  
 #createUserButton{
     margin: 2% 0 0 31%;
+}
+
+#ruleid, #rulephoneNumber, #ruleemail, #rulenickname, #rulepm, #rulename{
+    font-size: 13px;
+    font-weight: 800;
+    color: rgb(255, 0, 0);
+    padding: 0;
+    margin: 1% 0 1% 6%;
 }
  
