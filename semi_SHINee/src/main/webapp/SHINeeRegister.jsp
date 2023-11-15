@@ -12,15 +12,15 @@
             <div class="TabColor"><img src="images/mypage.png" class="TabiconImage"><strong class="TabTextStyle">회원 가입</strong> 
                 <button id="pageCloseButton" type="button" class="pageCloseButton" onclick="closeButton()"><Strong class="pageCloseButtonText">X</Strong></button>
             </div>           
-                <form id="createAccount" action="SHINeeRegisterServlet" method="post">
+                <form id="createAccount" action="SHINeeRegisterServlet" method="post" enctype="multipart/form-data">
 	                <div id="divid">
 	                    <label for="id">
 	                        <img class="iconImg" src="images/user.png">
 	                    </label>
 	                    <input id="id" name="id" type="text" oninput="idCheck()"  placeholder="아이디" autocomplete="off">
 	                    									<!--  oninput = 입력할때마다 실시간 체크   autocomplete="off" 자동완성 기능 off -->
-	                    <button id="idButton" type="button">아이디 중복 확인</button>
-	                    <p id="ruleid"></p>
+	                    <button id="idButton" type="button" name="idButton">아이디 중복 확인</button> <!--  onclick="idDbCheck()" --> 
+	                    <span id="ruleid"></span> <!--  <input type="hidden" name="idCheckBox" id="idCheckBox" value="idUnCheck">  -->
 	                </div>
 	                <div>
 	                    <label for="name">
@@ -57,7 +57,7 @@
 	                        <!-- 프로필 사진을 표시할 컨테이너 -->
 	                        <img id="uploadProfile">
 	                    </div>
-	                    <input type="file" id="profileInput" accept="image/*" style="margin: 0 0 0 6%;">
+	                    <input type="file" id="profileInput" name="profileInput" accept="image/*" style="margin: 0 0 0 6%;">
 	                    <button id="profileUploadButton" type="button">프로필 등록</button>
 	                </div>
 	                <br>

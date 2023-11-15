@@ -30,19 +30,36 @@ function closeButton(){
 function idCheck(){
 	
 	var userid = document.getElementById("id").value;
-	var idPattarn =  /^[A-za-z0-9]{6,12}$/;
+	const idPattarn =  /^[A-za-z0-9]{4,12}$/;
 	
 	if(idPattarn.test(userid)){
 		$('#ruleid').text('조건 일치').css('color', 'green');
 	}else{
-        $('#ruleid').text("아이디는 6 ~ 12 자의 숫자,영어 로만 구성되어야합니다").css('color', 'red');
+        $('#ruleid').text("아이디는 4 ~ 12 자의 숫자,영어 로만 구성되어야합니다").css('color', 'red');
      };
+     
+     document.userInfo.idCheckBox.value = "idUnCheck"
+     
 };
+
+
+
+/*
+function idDbCheck(){
+	const a = docu
+	a.value
+	window.name = "parentForm";
+	window.open("Id_Check.jsp?=",
+	"checkForm", "width=500, height=300, resizable = no, scrollbars = no");
+	
+	}
+	*/
+
 
 function nameCheck(){
 
     var username = document.getElementById("name").value; 
-    var namePattarn = /^[가-힣]{1,15}$/;
+    const namePattarn = /^[가-힣]{1,15}$/;
 
     if(namePattarn.test(username)){
 		$('#rulename').text('조건 일치').css('color', 'green');
@@ -55,7 +72,7 @@ function nameCheck(){
 function pwCheck(){
 	
 	var password = document.getElementById("pw").value;
-    var passwordPattarn = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,32}$/;
+    const passwordPattarn = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,32}$/;
 
     if(passwordPattarn.test(password)){
 		$('#rulepm').text('조건 일치').css('color', 'green');
@@ -73,7 +90,7 @@ function pwCheck(){
 function nicknameCheck(){
 
     var userNickname = document.getElementById("nickname").value;
-    var nicknamePattarn =  /^[가-힣A-za-z0-9]{1,20}$/;
+    const nicknamePattarn =  /^[가-힣A-za-z0-9]{1,20}$/;
     
     if(nicknamePattarn.test(userNickname)){
 		$('#rulenickname').text('조건 일치').css('color', 'green');
@@ -86,7 +103,7 @@ function nicknameCheck(){
 function userEmailCheck(){
     
     var userEmail = document.getElementById("emailid").value;
-    var emailPattarn =  /^[A-Za-z-0-9\-\.]+@[A-Ja-z-0-9\-\.]+\.[A-Ja-z-0-9]+$/;
+    const emailPattarn =  /^[A-Za-z-0-9\-\.]+@[A-Ja-z-0-9\-\.]+\.[A-Ja-z-0-9]+$/;
 
     if(emailPattarn.test(userEmail)){
 		$('#ruleemail').text('조건 일치').css('color', 'green');
@@ -98,7 +115,7 @@ function userEmailCheck(){
 function userPhoneCheck(){
 
     var userPhone = document.getElementById("phoneNumber").value;
-    var phonePattarn = /^(010|011)[0-9]{8}$/;
+    const phonePattarn = /^(010|011)[0-9]{8}$/;
 
     if(phonePattarn.test(userPhone)){
 		$('#rulephoneNumber').text('조건 일치').css('color', 'green');
@@ -113,6 +130,7 @@ function userPhoneCheck(){
 
 
 function CreateUser(){
+	
     var userid = document.getElementById("id").value;
     var username = document.getElementById("name").value; 
     var password = document.getElementById("pw").value;
@@ -120,20 +138,25 @@ function CreateUser(){
     var userNickname = document.getElementById("nickname").value;
     var userEmail = document.getElementById("emailid").value;
     var userPhone = document.getElementById("phoneNumber").value;
-    
+    //var idCheckBox = document.getElementById("idCheckBox").value;
 
 
     
-    var idPattarn =  /^[A-za-z0-9]{6,12}$/;
-    var namePattarn = /^[가-힣]{1,15}$/;
-    var passwordPattarn = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,32}$/;
-    var nicknamePattarn =  /^[가-힣A-za-z0-9]{1,20}$/;
-    var emailPattarn =  /^[A-Za-z-0-9\-\.]+@[A-Ja-z-0-9\-\.]+\.[A-Ja-z-0-9]+$/;
-    var phonePattarn = /^(010|011)[0-9]{8}$/;	
+    const idPattarn =  /^[A-za-z0-9]{4,12}$/;
+    const namePattarn = /^[가-힣]{1,15}$/;
+    const passwordPattarn = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,32}$/;
+    const nicknamePattarn =  /^[가-힣A-za-z0-9]{1,20}$/;
+    const emailPattarn =  /^[A-Za-z-0-9\-\.]+@[A-Ja-z-0-9\-\.]+\.[A-Ja-z-0-9]+$/;
+    const phonePattarn = /^(010|011)[0-9]{8}$/;	
 
     if(!userid.match(idPattarn)){
-        alert("아이디는 6 ~ 12 자의 숫자,영어 로만 구성되어야합니다");
+        alert("아이디는 4 ~ 12 자의 숫자,영어 로만 구성되어야합니다");
         return false;
+    /*else if(idCheckBox !="idOnCheck"){
+        alert("아이디 중복체크를 하셔야합니다.")
+        return false;
+        }
+        */
     }else if(!username.match(namePattarn)){
         alert("이름은 15자 이하의 한글로만 구성되어야 합니다.");
         return false;
@@ -153,9 +176,27 @@ function CreateUser(){
         alert("올바른 번호가 아닙니다.");
         return false;
     }else{
-    alert("회원가입이 정상적으로 완료되었습니다!.");
-    var pageMove = "https://music.apple.com/kr/browse";
-    location.href=pageMove;     // ( 현재 페이지에서 이동 )
+	alert("회원가입이 정상적으로 완료되었습니다!.");
+	location.href="homePage.jsp";
+	
+	
+	/*
+	var idCheckResult = $('#idCheckBox').val();
+    
+    // 아이디 중복 확인이 되었는지 확인
+    if (idCheckResult === 'idUnCheck') {
+        alert('아이디 중복 확인을 해주세요.');
+        return;
+    }
+    */
+
+  
+    
+	
+	
+    //alert("회원가입이 정상적으로 완료되었습니다!.");
+    //var pageMove = "https://music.apple.com/kr/browse";
+    //location.href=pageMove;     // ( 현재 페이지에서 이동 )
     
     // window.open(사이트링크) ( 새창 열기 )
     

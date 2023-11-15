@@ -1,11 +1,13 @@
 package com.kh.semi_SHINee;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 public class SHINeeUserDAO {
@@ -42,8 +44,12 @@ public class SHINeeUserDAO {
 				String userPW = result.getString("USER_PASSWORD");
 				String email = result.getString("EMAIL");
 				String phoneNumber = result.getString("PHONE_NUMBER");
+				Blob image = result.getBlob("image");
+				byte[] imageData = image.getBytes(1, (int) image.length());
+				String imageBase64 = Base64.getEncoder().encodeToString(imageData);
+                String imageUrl = "data:image/jpeg;base64, " + imageBase64;
 				
-				SHINeeUserData user = new SHINeeUserData(userId,userName,userNickname,userPW,email,phoneNumber);
+				SHINeeUserData user = new SHINeeUserData(userId,userName,userNickname,userPW,email,phoneNumber,imageUrl);
 				userInfo.add(user);
 					
 			}
@@ -78,6 +84,11 @@ public class SHINeeUserDAO {
 				String userPW = result.getString("USER_PASSWORD");
 				String email = result.getString("EMAIL");
 				String phoneNumber = result.getString("PHONE_NUMBER");
+				Blob image = result.getBlob("image");
+				
+				byte[] imageData = image.getBytes(1, (int) image.length());
+				String imageBase64 = Base64.getEncoder().encodeToString(imageData);
+                String imageUrl = "data:image/jpeg;base64, " + imageBase64;
 				
 				user.setUserId(userID);
 				user.setUserName(userName);
@@ -85,6 +96,7 @@ public class SHINeeUserDAO {
 				user.setUserPW(userPW);
 				user.setEmail(email);
 				user.setPhoneNumber(phoneNumber);
+				user.setImage(imageUrl);
 			}
 			
 			result.close();

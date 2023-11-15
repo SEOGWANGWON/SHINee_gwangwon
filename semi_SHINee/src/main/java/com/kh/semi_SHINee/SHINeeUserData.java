@@ -1,5 +1,7 @@
 package com.kh.semi_SHINee;
 
+import java.sql.Blob;
+
 public class SHINeeUserData {
 	private String userId;
 	private String userName;
@@ -7,15 +9,17 @@ public class SHINeeUserData {
 	private String userPW;
 	private String email;
 	private String phoneNumber;
+	private String image;
 	
 	
-	public SHINeeUserData(String userId, String userName, String userNickname, String userPW,  String email, String phoneNumber) {
+	public SHINeeUserData(String userId, String userName, String userNickname, String userPW,  String email, String phoneNumber, String image) {
 		this.userId = userId;
 		this.userName = userName;
 		this.userNickname = userNickname;
 		this.userPW = userPW;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.image = image;
 	}
 	
 	public SHINeeUserData() {
@@ -58,6 +62,12 @@ public class SHINeeUserData {
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }
